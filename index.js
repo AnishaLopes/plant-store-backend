@@ -13,19 +13,9 @@ app.use(urlencoded());
 const upload = multer({ dest: "uploads/" });
 const PORT = process.env.PORT || 7000;
 
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then((ack) => {
-    if (ack) {
-      console.log("connected");
-    }
-  })
-  .catch((err) => {
-    console.log("error", err);
-  });
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log("Mongo Error:", err));
 
 app.use(cors({
   origin: "*"

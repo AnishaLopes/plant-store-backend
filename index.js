@@ -27,6 +27,10 @@ mongoose
     console.log("error", err);
   });
 
+app.use(cors({
+  origin: "*"
+}));
+
 const reqSchema = new mongoose.Schema({
   address: String,
   buyerRemarks: String,
